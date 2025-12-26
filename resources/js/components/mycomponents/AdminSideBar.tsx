@@ -1,24 +1,27 @@
 import { HomeIcon } from "lucide-react";
+import { usePage } from '@inertiajs/react';
+import { SharedData } from "resources/js/types/index";
 
 export default function AdminSideBar() {
     const menuItems = [
-        { label: "Dashboard", href: "/admin/dashboard" },
         { label: "Home", href: "/admin" },
         { label: "Halls", href: "/admin/halls" },
         { label: "Movies", href: "/admin/movies" },
-        { label: "/admin/shows", href: "/admin/shows", label: "Shows" },
+        { label: "Shows", href: "/admin/shows", },
     ];
+
+    const { auth } = usePage<SharedData>().props;
 
     return (
         <aside className="h-screen w-64  text-gray-300 p-4 flex flex-col">
             {/* Profile */}
             <div className="flex items-center gap-3 mb-8">
                 <div className="h-10 w-10 rounded-lg bg-gray-800 flex items-center justify-center font-bold text-white">
-                    #
+                    {auth.user?.name?.charAt(0).toUpperCase() || '#'}
                 </div>
                 <div>
-                    <h4 className="font-semibold text-white">CCC</h4>
-                    <p className="text-xs text-gray-400">admin@cinema.com</p>
+                    <h4 className="font-semibold text-white">{auth.user?.name || 'Admin'}</h4>
+                    <p className="text-xs text-gray-400">{auth.user?.email}</p>
                 </div>
             </div>
 

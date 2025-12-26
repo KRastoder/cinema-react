@@ -15,8 +15,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('dashboard', function () {
         return Inertia::render('dashboard');
     })->name('dashboard');
-});
 
-Route::get('/admin', [AdminController::class, 'main']);
+    Route::get('/admin', [AdminController::class, 'main']);
+});
 
 require __DIR__ . '/settings.php';
