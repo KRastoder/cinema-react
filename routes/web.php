@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\HallController;
 use App\Http\Controllers\MovieController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -17,12 +18,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
         return Inertia::render('dashboard');
     })->name('dashboard');
 
-    Route::prefix('admin')
-        ->name('admin.')
-        ->group(function () {
-            Route::get("/", [AdminController::class, 'main']);
-            Route::resource("movies", MovieController::class);
-        });
+    Route::prefix('admin')->name('admin.')->group(function () {
+        Route::get("/", [AdminController::class, 'main']);
+        Route::resource("movies", MovieController::class);
+        Route::resource("halls", HallController::class);
+    });
 });
 
 require __DIR__ . '/settings.php';
