@@ -7,9 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Movie extends Model
 {
     protected $fillable = [
-        "publisher",
-        "name",
+        "title",
+        "duration",
         "description",
+        "poster",
         "release_date",
     ];
 }

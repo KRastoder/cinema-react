@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\MovieController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Laravel\Fortify\Features;
@@ -16,7 +17,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
         return Inertia::render('dashboard');
     })->name('dashboard');
 
-    Route::get('/admin', [AdminController::class, 'main']);
+    Route::prefix('admin')
+        ->name('admin.')
+        ->group(function () {
+            Route::get("/", [AdminController::class, 'main']);
+            Route::resource("movies", MovieController::class);
+        });
 });
 
 require __DIR__ . '/settings.php';

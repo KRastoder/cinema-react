@@ -1,19 +1,20 @@
-import { HomeIcon } from "lucide-react";
+import { HomeIcon, Popcorn, } from "lucide-react";
 import { usePage } from '@inertiajs/react';
 import { SharedData } from "resources/js/types/index";
+import VideoCameraOutlinedIcon from "./VideoCameraOutlinedIcon";
 
 export default function AdminSideBar() {
     const menuItems = [
-        { label: "Home", href: "/admin" },
-        { label: "Halls", href: "/admin/halls" },
-        { label: "Movies", href: "/admin/movies" },
-        { label: "Shows", href: "/admin/shows", },
+        { label: "Home", href: "/admin", icon: HomeIcon },
+        { label: "Halls", href: "/admin/halls", icon: Popcorn },
+        { label: "Movies", href: "/admin/movies", icon: VideoCameraOutlinedIcon },
+        { label: "Shows", href: "/admin/shows", icon: HomeIcon },
     ];
 
     const { auth } = usePage<SharedData>().props;
 
     return (
-        <aside className="h-screen w-64  text-gray-300 p-4 flex flex-col">
+        <aside className="h-max w-64  text-gray-300 p-4 flex flex-col">
             {/* Profile */}
             <div className="flex items-center gap-3 mb-8">
                 <div className="h-10 w-10 rounded-lg bg-gray-800 flex items-center justify-center font-bold text-white">
@@ -27,16 +28,22 @@ export default function AdminSideBar() {
 
             {/* Navigation */}
             <nav className="flex flex-col gap-1">
-                {menuItems.map((item) => (
-                    <a
-                        key={item.label}
-                        href={item.href}
-                        className="flex items-center gap-3 px-3 py-2 rounded-lg text-sm hover:bg-gray-900 hover:text-white transition"
-                    >
-                        <HomeIcon size={18} />
-                        {item.label}
-                    </a>
-                ))}
+                {menuItems.map((item) => {
+                    // Assign the icon to a capitalized variable name so React recognizes it as a component
+                    const Icon = item.icon;
+
+                    return (
+                        <a
+                            key={item.label}
+                            href={item.href}
+                            className="flex items-center gap-3 px-3 py-2 rounded-lg text-sm hover:bg-gray-800 hover:text-white transition "
+                        >
+                            {/* Render the specific icon for this item */}
+                            <Icon size={18} />
+                            {item.label}
+                        </a>
+                    );
+                })}
             </nav>
 
             {/* Footer */}
