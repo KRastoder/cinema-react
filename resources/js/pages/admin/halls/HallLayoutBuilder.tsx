@@ -85,7 +85,7 @@ const HallLayoutBuilder = () => {
                         type="text"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
-                        className="bg-black border border-gray-700 p-2 rounded text-white"
+                        className="bg-gray-950 border border-gray-700 p-2 rounded text-white "
                     />
                 </div>
 
@@ -96,7 +96,7 @@ const HallLayoutBuilder = () => {
                         type="text"
                         value={city}
                         onChange={(e) => setCity(e.target.value)}
-                        className="bg-black border border-gray-700 p-2 rounded text-white"
+                        className="bg-gray-950 border border-gray-700 p-2 rounded text-white"
                     />
                 </div>
 
@@ -112,7 +112,7 @@ const HallLayoutBuilder = () => {
                             onChange={(e) =>
                                 setRows(Math.min(maxRows, Math.max(1, Number(e.target.value))))
                             }
-                            className="bg-black border border-gray-700 p-2 rounded text-white"
+                            className="bg-gray-950 border border-gray-700 p-2 rounded text-white"
                         />
                     </div>
                     <div className="flex flex-col">
@@ -126,7 +126,7 @@ const HallLayoutBuilder = () => {
                             onChange={(e) =>
                                 setColumns(Math.min(maxCols, Math.max(1, Number(e.target.value))))
                             }
-                            className="bg-black border border-gray-700 p-2 rounded text-white"
+                            className="bg-gray-950 border border-gray-700 p-2 rounded text-white"
                         />
                     </div>
                 </div>
@@ -155,7 +155,7 @@ const HallLayoutBuilder = () => {
                                         copy[idx] = Math.min(rows - 1, Math.max(1, Number(e.target.value)));
                                         setRowWalkways(copy);
                                     }}
-                                    className="w-full bg-black border border-gray-700 p-1 rounded text-white text-xs"
+                                    className="w-full bg-gray-950 border border-gray-700 p-1 rounded text-white text-xs"
                                 />
                                 <button
                                     type="button"
@@ -195,7 +195,7 @@ const HallLayoutBuilder = () => {
                                         copy[idx] = Math.min(columns - 1, Math.max(1, Number(e.target.value)));
                                         setColWalkways(copy);
                                     }}
-                                    className="w-full bg-black border border-gray-700 p-1 rounded text-white text-xs"
+                                    className="w-full bg-gray-950 border border-gray-700 p-1 rounded text-white text-xs"
                                 />
                                 <button
                                     type="button"

@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HallController;
 use App\Http\Controllers\MovieController;
+use App\Http\Controllers\ShowController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Laravel\Fortify\Features;
@@ -21,7 +22,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::prefix('admin')->name('admin.')->group(function () {
         Route::get("/", [AdminController::class, 'main']);
         Route::resource("movies", MovieController::class);
-        Route::resource("halls", HallController::class);
+        Route::resource("halls", HallController::class); //TODO ADD FULL CRUD
+        Route::resource("shows", ShowController::class);
     });
 });
 

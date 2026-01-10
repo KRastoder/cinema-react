@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Repositories;
 
 use App\Models\Halls;
@@ -9,8 +8,8 @@ use Illuminate\Support\Facades\DB;
 class HallsRepository
 {
     public function __construct(
-        protected Halls $hallsModel,
-        protected HallSeats $hallSeatsModel
+        protected Halls $hallsModel = new Halls(),
+        protected HallSeats $hallSeatsModel = new HallSeats()
     ) {}
 
     public function createHallsAndSeats($request)
@@ -26,7 +25,7 @@ class HallsRepository
             ]);
 
             $totalSeats = $request->rows * $request->columns;
-            $vipSeats = (array) $request->vip_seats;
+            $vipSeats   = (array) $request->vip_seats;
 
             for ($i = 1; $i <= $totalSeats; $i++) {
                 $this->hallSeatsModel->create([
@@ -38,5 +37,11 @@ class HallsRepository
 
             return $hall;
         });
+    }
+    public function fetchAllHalls()
+    {
+        return $this->hallsModel
+            ->select('id', 'name')
+            ->get();
     }
 }

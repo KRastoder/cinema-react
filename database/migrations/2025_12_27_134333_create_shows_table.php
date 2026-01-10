@@ -17,6 +17,8 @@ return new class extends Migration
             $table->foreignId('hall_id');
             $table->unsignedInteger('price');
             $table->unsignedInteger('vip_price');
+            $table->unsignedSmallInteger('show_time');
+            $table->date("show_date");
             $table->timestamps();
         });
     }

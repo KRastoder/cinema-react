@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Models\Halls;
@@ -9,28 +8,24 @@ use Inertia\Inertia;
 
 class HallController extends Controller
 {
-    public function __construct(private HallsRepository $hallsRepo) {}
+    public function __construct(private HallsRepository $hallsRepo)
+    {}
 
     public function index()
     {
         return Inertia::render("admin/halls/Halls");
     }
 
-    public function create()
-    {
-        return Inertia::render("admin/halls/HallLayoutBuilder");
-    }
-
     public function store(Request $request)
     {
         $request->validate([
-            "name" => "required|string",
-            "city" => "required|string",
-            "rows" => "required|integer|min:1",
-            "columns" => "required|integer|min:1",
+            "name"         => "required|string",
+            "city"         => "required|string",
+            "rows"         => "required|integer|min:1",
+            "columns"      => "required|integer|min:1",
             "row_walkways" => "nullable|array",
             "col_walkways" => "nullable|array",
-            "vip_seats" => "nullable|array",
+            "vip_seats"    => "nullable|array",
         ]);
 
         $this->hallsRepo->createHallsAndSeats($request);

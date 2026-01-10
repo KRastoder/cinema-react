@@ -1,10 +1,11 @@
 import AdminLayout from "@/components/mycomponents/AdminLayout";
+import HallLayoutBuilder from "./HallLayoutBuilder";
 
 export default function Halls() {
 
     return (
         <div>
-            <h1 className="text-xl">Hello World</h1>
+            <HallLayoutBuilder/>
         </div>
     )
 }

@@ -73,4 +73,10 @@ class MovieRepository
 
         return $movie->delete();
     }
+    public function fetchAllMovies()
+    {
+        return $this->movieModel
+            ->select('id', 'title')
+            ->get();
+    }
 }
