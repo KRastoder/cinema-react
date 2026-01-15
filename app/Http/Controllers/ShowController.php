@@ -20,7 +20,7 @@ class ShowController extends Controller
         return Inertia::render('admin/ShowsIndex', [
             "allMovies" => $this->movieRepo->fetchAllMovies(),
             "allHalls"  => $this->hallsRepo->fetchAllHalls(), 
-            "allshows"
+            "allshows"  => $this->showRepo->getAllShows(),
         ]);
     }
 

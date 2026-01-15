@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HallController;
 use App\Http\Controllers\MovieController;
+use App\Http\Controllers\ReservationsController;
 use App\Http\Controllers\ShowController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -13,6 +14,9 @@ Route::get('/', function () {
         'canRegister' => Features::enabled(Features::registration()),
     ]);
 })->name('home');
+
+
+Route::get("/shows", [ReservationsController::class, 'reservationPage']);
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('dashboard', function () {

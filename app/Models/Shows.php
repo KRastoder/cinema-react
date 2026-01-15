@@ -12,6 +12,5 @@ class Shows extends Model
         'vip_price',
         'show_time',
         'show_date',
-
     ];
 }

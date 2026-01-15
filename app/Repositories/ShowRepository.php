@@ -26,5 +26,9 @@ class ShowRepository
             ]);
         }
     }
-}
 
+    public function getAllShows()
+    {
+        return $this->showSeatsModel->all(); //Bcs its MVP its all but if we have masive data ajust
+    }
+}
